@@ -1,4 +1,4 @@
-@extends('layouts.app')
+  @extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -37,7 +37,12 @@
                                     </h3>
                                     <div class="ml-auto">
                                         <a href="{{ route('questions.edit', $question->id)}}" class="btn btn-sm btn-outline-info">Edit</a>
-                                    </div>
+                                        <form class="form-delete" action="{{ route('questions.destroy', $question->id) }}" method="post">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Delete this question')">Delete</button>
+                                        </form>
+                                    </div> 
                                 </div>
                                 <p class="lead">
                                     Asked by
